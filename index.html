@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Emotion Box Artifact</title>
+  <style>
+    body {
+      background: #222;
+      color: #fff;
+      font-family: sans-serif;
+      text-align: center;
+      padding-top: 60px;
+    }
+    #box {
+      width: 150px;
+      height: 150px;
+      margin: 40px auto;
+      background: gray;
+      transition: all 0.4s ease;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<h1>🎭 Emotion Box</h1>
+<p id="message">今は無感情です</p>
+
+<div id="box"></div>
+
+<button onclick="changeEmotion()">感情を変える</button>
+
+<script>
+  const emotions = [
+    { text: "😊 嬉しい", color: "gold", rotate: "0deg" },
+    { text: "😢 悲しい", color: "dodgerblue", rotate: "0deg" },
+    { text: "😡 怒っている", color: "crimson", rotate: "10deg" },
+    { text: "😴 眠い", color: "slategray", rotate: "-10deg" }
+  ];
+
+  let index = -1;
+  const box = document.getElementById("box");
+  const message = document.getElementById("message");
+
+  function changeEmotion() {
+    index = (index + 1) % emotions.length;
+    const e = emotions[index];
+
+    message.textContent = e.text;
+    box.style.background = e.color;
+    box.style.transform = `rotate(${e.rotate})`;
+  }
+</script>
+
+</body>
+</html>
